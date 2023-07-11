@@ -101,7 +101,7 @@ class Main(QMainWindow, Ui_Main):
 
         '''Modificadores'''
         self._usuario = None
-        ip = 'localhost'
+        ip = '10.180.41.189'
         port = 5000
         addr = ((ip, port))
         self.client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
