@@ -170,6 +170,52 @@ class Main(QMainWindow, Ui_Main):
             self.QtStack.setCurrentWidget(novo)
         return ir_para_pagina_atividade
 
+<<<<<<< Updated upstream
+=======
+
+class Main(QMainWindow, Ui_Main):
+    def __init__(self, parent=None):
+        super(QMainWindow, self).__init__(parent)
+        self.setupUi(self)
+
+        '''Modificadores'''
+        self._usuario = None
+        #ip = '10.180.41.189'
+        self._usuario_id = None
+        ip = '10.180.46.33'
+        port = 5000
+        addr = ((ip, port))
+        self.client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.client_socket.connect(addr)
+
+        self.tela_login.botao_login.clicked.connect(self.botao_login)
+        self.tela_login.botao_cadastro.clicked.connect(self.botao_cadastrar)
+        self.tela_cadastro.alunos_botao_voltar.clicked.connect(
+            self.botao_voltar_cadastro)
+        self.tela_cadastro.professores_botao_voltar.clicked.connect(
+            self.botao_voltar_cadastro)
+        self.tela_cadastro.alunos_botao_cadastrar.clicked.connect(
+            self.botao_cadastrar_aluno)
+        self.tela_cadastro.professores_botao_cadastrar.clicked.connect(
+            self.botao_cadastrar_professor)
+
+        self.tela_principal_aluno.botao_logoff.clicked.connect(
+            self.botao_logoff)
+        self.tela_principal_aluno.botao_sair.clicked.connect(self.botao_sair)
+        self.tela_principal_professor.botao_logoff.clicked.connect(
+            self.botao_logoff)
+        self.tela_principal_professor.botao_sair.clicked.connect(
+            self.botao_sair)
+
+    @property
+    def usuario_id(self):
+        return self._usuario_id
+
+    @usuario_id.setter
+    def usuario_id(self, usuario_id):
+        self._usuario_id = usuario_id
+
+>>>>>>> Stashed changes
     def pegar_atividades_materia(self, materia_id):
         self.client_socket.send(f'3|{materia_id}'.encode())
         atividades = self.client_socket.recv(32784).decode().split('|')
